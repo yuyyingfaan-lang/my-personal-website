@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深海电台｜Songs I Keep</title>
+      <link rel="stylesheet" href="./音乐格式.css">
+</head>
+<body id="top">
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+    <header class="topbar">
+        <div class="brand">深海日记 · DEEP SEA DIARY</div>
+        <nav class="nav">
+            <a href="#records">RECORDS</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="eyebrow">A LITTLE SPACE FOR MUSIC</div>
+            <h1>Songs I Keep</h1>
+            <p>歌曲陪着我走过千山万水。</p>
+            <div class="hint">向下探索我的音乐收藏 ↓</div>
+        </section>
+        <section class="section" id="records">
+            <div class="section-head">
+                <div>
+                    <h2>漂浮唱片 · RECORD WALL</h2>
+                    <p>选择一张唱片，看看它带你去哪里。</p>
+                </div>
+                <div class="count">
+                    MY COLLECTION / <span id="recordCount">06</span>
+                </div>
+            </div>
+
+            <div class="record-wall" id="recordWall"></div>
+        </section>
+
+        <section class="farewell" id="end">
+            <span>END OF THE JOURNEY</span>
+            <h2>参观结束了</h2>
+            <p>谢谢你在这片深蓝里停留。愿下一首歌，也能陪你走一段路。</p>
+
+            <a href="#top" class="back-top" aria-label="回到页面起点">
+                <span class="back-top-icon" aria-hidden="true">↑</span>
+                <span>回到起点</span>
+            </a>
+        </section>
+    </main>
+    <footer>
+        MADE OF MUSIC, MEMORIES & A LITTLE BIT OF BLUE
+    </footer>
+    <!-- 点击唱片后出现的故事窗口 -->
+    <div class="story-modal" id="storyModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="story-dialog" role="document">
+            <button class="story-close" id="closeStory" type="button" aria-label="关闭故事">
+                ×
+            </button>
+            <div class="modal-art">
+                <div class="modal-vinyl">
+                    <span id="modalLabel">SIDE A</span>
+                </div>
+            </div>
+            <div class="modal-copy">
+                <div class="modal-eyebrow">
+                    A STORY BEHIND THE SONG
+                </div>
+                <h2 id="modalTitle">歌曲名称</h2>
+                <p class="modal-byline" id="modalByline">歌手</p>
+                <div class="modal-story" id="modalStory">
+                    这里会显示你和这首歌的故事。
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部唱片信息 -->
+    <div class="mini-player">
+       <div class="mini-disc" id="miniDisc">
+            <span></span>
+        </div>
+        <div class="mini-info">
+            <strong id="miniTitle">还没有选择歌曲</strong>
+            <small id="miniArtist">点击唱片开始探索</small>
+        </div>
+        <div class="mini-controls">
+            <button id="prevBtn" aria-label="上一张唱片">
+                ‹
+            </button>
+            <button id="nextBtn" aria-label="下一张唱片">
+                ›
+            </button>
+        </div>
+    </div>
+    <script>
+        const songs = [
+            {
+                title: "太美丽",
+                artist: "陶喆",
+                mood: "R&B",
+                label: "myself",
+                color: "#8bc5f4",
+                story: "这首歌是陶喆的所有作品中我最喜欢的一首。歌词其实写得很简单，就是一个人对另一个人坚持不懈地支持着自己的告白。在我的视角下，这个另一个人就是自己，尤其是歌词写的“当你在风雨的未知里走过，当我迷失在自我的漩涡”，你就是身体，面对着风雨和未知，我面对着精神上的压力，我们可以度过难关，是因为你支持着我，我支持着你，在我们的眼中，彼此都太美丽！"
+            },
+            {
+                title: "落叶归根",
+                artist: "王力宏",
+                mood: "流行",
+                label: "FAMILY",
+                color: "#b2a7ed",
+                story: "高三的时候，落叶归根是我最常听的歌，能够发挥抚慰我情绪的奇效。旋律悠扬婉转，连同王力宏的声线，真的可以说是非常伟大的作品。听着这首歌，我常常会想，未来自己会在什么样的地方，我会后悔我曾经的选择吗，就算是忧郁、就算是孤单我也会心甘情愿吗？想着未来，怀念过去，我觉得这首歌连接了过去、现在，未来的我，在这个瞬间，我们共存。"
+            },
+            {
+                title: "捕梦",
+                artist: "黄子弘凡",
+                mood: "流行",
+                label: "DREAM",
+                color: "#81d7d0",
+                story: "这首歌是我看完演唱会以后印象最深的一首歌。回来以后我把它循环播放了一百多遍。它很像捕梦网，是轻柔的、带着思念和美好祝福的。从歌曲本身来说，没有什么特别的，但是因为这次经历，却让这首歌在我的心里变得不一般，像是在对我唱的一首满含祝福的幸福之歌！"
+            },
+            {
+                title: "DREAM",
+                artist: "BABYMONSTER",
+                mood: "流行",
+                label: "COURAGE",
+                color: "#e3a8d6",
+                story: "《DREAM》对于这个团队来说是特殊的一首歌，这是她们告别练习生真正成为艺人的一首歌。所以这首歌，前面半段代表了练习生涯，是忧伤的，难挨的，但是后面象征着成功，伴随着紧凑的鼓点，越来越积极，听起来非常的振奋，鼓舞人心。尤其是在你需要安慰的时候，特别推荐去听一听这首歌，你会在聆听的过程中获得力量，你会被她们的演唱感染的！"
+            },
+            {
+                title: "When this rain stops",
+                artist: "WENDY",
+                mood: "流行",
+                label: "BELIEF",
+                color: "#e7c58f",
+                story: "这首歌和我的缘分最长，最久远。它陪伴我走过了我的初三下半学年，是我初中最艰难的岁月。这是一首非常安静的歌，只有钢琴和人声，是温暖的歌，却也很有力量。是因为唱这首歌的人温暖又有力量。在高处不慎坠落后，Wendy她一直在努力地恢复身体，为了唱歌，她坚持不懈地复健、练习，才有了这首歌。我每次听的时候，我就会告诉我自己，在世界的一边，有人做到了看似不可能的事情，只要坚持，你也可以的。就这样艰难地坚持了下来。"
+            },
+            {
+                title: "我相信",
+                artist: "吴莫愁",
+                mood: "流行",
+                label: "BELIEVE",
+                color: "#9eafff",
+                story: "最后一首我选择了吴莫愁的我相信。我一直认为她的声音是特别的，有勾人心魄，妩媚但是有力量的声音，磅礴大气的。这首歌的歌词写得很动人，用尽我青春，换一个永恒，是一个年轻有毅力有目标的人，不断奋斗的写照。如果当你对生活失去了希望和信心，可以去听一下这首歌，她的演绎不会让你失望的！"
+            }
+        ];
+        const wall = document.getElementById("recordWall");
+        let currentIndex = 0;
+        /* 生成唱片 */
+        function renderRecords() {
+            wall.innerHTML = "";
+            songs.forEach((song, index) => {
+                const card = document.createElement("article");
+                card.className = "record-card";
+                card.tabIndex = 0;
+                card.setAttribute("role", "button");
+                card.setAttribute("aria-label", `选择 ${song.title}`);
+                card.innerHTML = `
+                    <div class="record-stage">
+                        <div class="halo"></div>
+                        <div class="vinyl">
+                            <div class="label" style="--label:${song.color}">
+                                ${song.label}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="song-title">
+                        ${song.title}
+                    </div>
+                    <div class="artist">
+                        ${song.artist}
+                    </div>
+                    <span class="tag">
+                        ${song.mood}
+                    </span>
+                `;
+                card.addEventListener("click", () => selectSong(index));
+                card.addEventListener("keydown", e => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        selectSong(index);
+                    }
+                });
+                wall.appendChild(card);
+            });
+            document.getElementById("recordCount").textContent =
+                String(songs.length).padStart(2, "0");
+        }
+        /* 打开故事窗口 */
+        function openStoryModal() {
+            const modal = document.getElementById("storyModal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        }
+        /* 关闭故事窗口 */
+        function closeStoryModal() {
+            const modal = document.getElementById("storyModal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+        }
+        /* 选择歌曲 */
+        function selectSong(index) {
+            currentIndex =
+                (index + songs.length) % songs.length;
+            const song = songs[currentIndex];
+            /* 当前唱片高亮 */
+            document
+                .querySelectorAll(".record-card")
+                .forEach((card, i) => {
+                    card.classList.toggle(
+                        "active",
+                        i === currentIndex
+                    );
+                });
+            /* 底部显示歌曲 */
+            document.getElementById("miniTitle").textContent =
+                song.title;
+            document.getElementById("miniArtist").textContent =
+                song.artist;
+            /* 故事窗口 */
+            document.getElementById("modalTitle").textContent =
+                song.title;
+            document.getElementById("modalByline").textContent =
+                song.artist + " · " + song.mood;
+            document.getElementById("modalStory").textContent =
+                song.story;
+            /* 唱片标签 */
+            document.getElementById("modalLabel").textContent =
+                song.label;
+            /* 唱片颜色 */
+            document
+                .querySelector(".modal-vinyl")
+                .style
+                .setProperty(
+                    "--modal-color",
+                    song.color
+                );
+            /* 打开故事 */
+            openStoryModal();
+        }
+        /* 关闭按钮 */
+        document
+            .getElementById("closeStory")
+            .addEventListener(
+                "click",
+                closeStoryModal
+            );
+        /* 点击窗口外部关闭 */
+        document
+            .getElementById("storyModal")
+            .addEventListener("click", e => {
+                if (e.target.id === "storyModal") {
+                    closeStoryModal();
+                }
+            });
+        /* ESC 关闭窗口 */
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                closeStoryModal();
+            }
+        });
+        /* 上一首 */
+        document
+            .getElementById("prevBtn")
+            .addEventListener("click", () => {
+                selectSong(currentIndex - 1);
+            });
+        /* 下一首 */
+        document
+            .getElementById("nextBtn")
+            .addEventListener("click", () => {
+                selectSong(currentIndex + 1);
+            });
+        /* 装饰气泡 */
+        const layer =
+            document.getElementById("bubbles");
+        if (layer) {
+            for (let i = 0; i < 28; i++) {
+                const b =
+                    document.createElement("i");
+                b.className = "bubble";
+
+                b.style.left =
+                    Math.random() * 100 + "%";
+
+                b.style.animationDuration =
+                    (12 + Math.random() * 18) + "s";
+
+                b.style.animationDelay =
+                    (-Math.random() * 24) + "s";
+                b.style.opacity =
+                    (
+                        0.15 +
+                        Math.random() * 0.45
+                    ).toFixed(2);
+                const size =
+                    2 + Math.random() * 5;
+                b.style.width =
+                    size + "px";
+                b.style.height =
+                    size + "px";
+                layer.appendChild(b);
+            }
+        }
+        /* 页面背景随滚动变化 */
+        let scrollTicking = false;
+        function updateScrollBackground() {
+            const maxScroll =
+                Math.max(
+                    1,
+                    document.documentElement.scrollHeight -
+                    window.innerHeight
+                );
+            const progress =
+                Math.min(
+                    1,
+                    Math.max(
+                        0,
+                        window.scrollY / maxScroll
+                    )
+                );
+            document.documentElement.style
+                .setProperty(
+                    "--bg-y",
+                    Math.round(progress * 100) + "%"
+                );
+            document.documentElement.style
+                .setProperty(
+                    "--bg-x",
+                    Math.round(42 + progress * 20) + "%"
+                );
+            document.documentElement.style
+                .setProperty(
+                    "--bg-hue",
+                    Math.round(progress * 24) + "deg"
+                );
+            scrollTicking = false;
+        }
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (!scrollTicking) {
+                    window.requestAnimationFrame(
+                        updateScrollBackground
+                  );
+                    scrollTicking = true;
+                }
+            },
+            {
+                passive: true
+            }
+        );
+        /* 初始化 */
+        updateScrollBackground();
+        renderRecords();
+        closeStoryModal();
+    </script>
+</body>
+</html>

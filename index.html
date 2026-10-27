@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into the Blue — Yuying's Universe</title>
+    <link rel="stylesheet" href="格式.css">
+</head>
+
+<body>
+
+<!-- 背景分层 -->
+ <div id="ocean-world">
+    <div id="surface"></div>
+    <div id="underwater"></div>
+    <div id="light-rays"></div>
+    <div id="particles"></div>
+    <div id="vignette"></div>
+</div>
+<!-- 顶部导航 -->
+ <nav id="nav">
+    <a href="#home" class="brand">YUYING · INTO THE BLUE</a>
+  <ul>
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#research">研究</a></li>
+    <li><a href="#confusion">深海日记</a></li>
+    <li><a href="#interests">兴趣</a></li>
+  </ul>
+</nav>
+<!-- 海面 -->
+<section id="home">
+  <div class="hero-content reveal visible">
+    <div class="hero-kicker">A JOURNEY BENEATH THE SURFACE</div>
+    <h1>Into the Blue</h1>
+    <div class="hero-line"></div>
+    <p class="hero-subtitle">每个人都是一片海。<br>这里是我的世界的一部分。欢迎探索！</p>
+  </div>
+  <a class="scroll-cue" href="#about">
+    BEGIN THE JOURNEY
+    <span>↓</span>
+  </a>
+</section>
+
+<!-- About：信 -->
+ <section class="section" id="about">
+    <div class="letter-heading">
+        <span class="eyebrow">A LITTLE LETTER FROM THE DEEP</span>
+        <h2>A Letter to You</h2>
+        <p>一封写给我们的信</p>
+    </div>
+    <div class="letter-container" id="aboutLetter">
+        <!-- 信封 -->
+        <button class="envelope-trigger"
+                type="button"
+                onclick="toggleAboutLetter()"
+                aria-expanded="false"
+                aria-controls="letterPaper">
+            <img
+                src="img/信封.png"
+                alt="一封复古信封"
+                class="envelope-image">
+            <span class="envelope-label">OPEN MY LETTER</span>
+            <span class="envelope-hint">点击信封，读一封关于我的信</span>
+        </button>
+        <!-- 信纸 -->
+        <article class="letter-paper" id="letterPaper">
+            <div class="letter-paper-content">
+                <div class="letter-date">
+                    A NOTE FROM MY WORLD
+                    <span>✦</span>
+                </div>
+                <h3>致亲爱的你</h3>
+                <p class="letter-greeting">&nbsp;&nbsp;你好，欢迎来到深海。</p>
+                <p>&nbsp;&nbsp;从我们来到这个世界的那一刻开始，一个哲学问题便一直伴随着我们：<b>我是谁？我从哪里来？我要到哪里去？</b>
+                   也许我们需要用一生去探索，也用一生去寻找属于自己的答案。
+                </p>
+
+                <p>
+                    &nbsp;&nbsp;如果把人比作海洋，那么海面就是我们向外展示的模样。清透、蔚蓝，容易被看见。渐渐深入，进入深海，能够抵达的人也越来越少，而这里是一个人真正的内心世界。
+                    尤其在这个快节奏的时代，很多原本属于自己的喜好、想法和情绪，往往被生活的洪流淹没。于是我想借这样一个网页，呈现我的内心世界。
+                    <br><b>所以，恭喜你成功进入深海！欢迎和我一起探索！</b>
+                </p>
+                <p>
+                    &nbsp;&nbsp;首先先自我介绍一下，我是一名心理学的学生，一个站在门外久久徘徊的学生，
+                    在日常生活中呢，我喜欢音乐、旅游和打游戏，有点宅。
+                    其实我的人生目标很简单，我希望可以过的幸福，
+                    但是往往实现目标的道路是痛苦，尤其是一些虚无的，没法用标准衡量的目标。
+                    不过没有关系，就像一首歌唱的那样，&nbsp;&nbsp;<b><br>她说风雨中这点痛算什么，擦干泪，不要怕至少我们还有梦~~~</b>
+                </p>
+                <div class="letter-signoff">
+                    <span>神秘人</span>
+                    <span class="signature">A little part of me</span>
+                </div>
+                <div class="letter-bottom">
+                    <span>END OF THIS LETTER</span>
+                    <span>✧ 01 ✧</span>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<div class="transition-space"></div>
+<!-- 研究与思考 --> 
+<section class="section reveal" id="research">
+    <div class="section-kicker">02 / CURIOSITY FILES</div>
+    <h2>我正在探索的问题<br>Research </h2>
+    <p class="section-intro">关于人、关系，以及我想继续了解的世界。</p>
+    <div class="research-tabs" role="tablist" aria-label="研究主题">
+      <button class="tab-btn" role="tab" aria-selected="true" data-panel="social">01 社会心理学研究</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-panel="product">02 心理健康产品设计</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-panel="future">03 未来探索</button>
+    </div>
+    <div class="research-panel" id="researchPanel" role="tabpanel" aria-live="polite">
+      <h3>社会排斥与人际信任</h3>
+      <p>我参与了关于社会排斥与人际信任关系的实验研究，关注个体经历不同程度的社会排斥后，对陌生对象的信任判断会如何变化。</p>
+      <ul><li>参与实验设计与实验材料制作</li><li>参与数据收集与统计分析</li><li>在动态互动情境中思考信任如何形成与变化</li></ul>
+      <div class="research-footer">KEY QUESTION · 社会互动经历会如何影响我们对他人的判断？</div>
+    </div>
+  </section>
+ 
+<!-- 进入深海 -->
+<section id="confusion" class="chapter">
+  <div class="reveal">
+    <div class="chapter-label">03 / BELOW THE SURFACE</div>
+    <h2>深海日记<br>Confusion</h2>
+    <p class="lead">越往深处，光越少。<br>生活中有许多的烦恼！</p>
+  </div>
+
+  <div class="confusion-notes reveal" aria-label="困惑便签">
+    <button class="confusion-note note-blue" type="button" aria-expanded="false">
+      <span class="note-number">NOTE 01 · ABOUT MYSELF</span>
+      <strong>为什么越害怕做不好，越难开始？</strong>
+      <span class="note-preview">有些事情还没开始，就已经让我感到焦虑。</span>
+      <span class="note-more">展开便签 ＋</span>
+      <span class="note-detail">我常常因为担心结果不够好而迟迟不敢动手，拖得越久，又越容易责怪自己。越焦虑，就越拖延，事情就越糟糕，循环往复，无限循环！我希望有那么一天拖延可以离我而去......</span>
+    </button>
+    <button class="confusion-note note-lilac" type="button" aria-expanded="false">
+      <span class="note-number">NOTE 02 · ABOUT THE FUTURE</span>
+      <strong>我想要的生活，究竟是什么样的？</strong>
+      <span class="note-preview">未来有很多条路，但我还没有想清楚要走向哪里。</span>
+      <span class="note-more">展开便签 ＋</span>
+      <span class="note-detail">我会认真考虑不同的选择，也会担心选错以后失去其他可能。虽然说我们都知道捡了芝麻，丢了西瓜的寓言故事，但是在真正做选择的时候，很难清楚地看待问题。</span>
+    </button>
+    <button class="confusion-note note-slate" type="button" aria-expanded="false">
+      <span class="note-number">NOTE 03 · ABOUT CONNECTION</span>
+      <strong>人与人之间，为什么有时很难靠近？</strong>
+      <span class="note-preview">有些关系在共同的生活结束后，也慢慢停在了原地。</span>
+      <span class="note-more">展开便签 ＋</span>
+      <span class="note-detail">我有时不知道该怎样维持一段关系。一起上课、一起做事的时候很自然，环境变了以后却很难继续靠近。也许大家都在忙自己的生活，也许我还不擅长主动。好想拥有地久天长的友谊！</span>
+    </button>
+  </div>
+</section>
+
+<!-- 生活兴趣 -->
+ <section id="interests" class="chapter">
+    <div class="reveal">
+    <div class="chapter-label">04 / THINGS THAT KEEP ME AFLOAT</div>
+    <h2>生活的切片<br>Little Things</h2>
+    <p class="lead">
+      即使世界有很深的地方，也总有一些小事让人感到轻盈。
+      这些是我愿意反复回到的角落。
+    </p>
+  </div>
+  <div class="interest-grid reveal">
+    <a href="音乐.html" class="interest-card" target="_blank">
+      <div class="num">01 — SOUND</div>
+      <h3>音乐</h3>
+      <p>音乐是靠谱的伙伴<br>美妙的旋律陪着我走过一段一段路。</p>
+    </a>
+    <a href="travel.html" class="interest-card" target="_blank">
+      <div class="num">02 — PLACES</div>
+      <h3>旅行</h3>
+      <p>陌生的街道、远方的海和天空。<br>去看一些不一样的世界。</p>
+    </a>
+    
+  </div>
+</section>
+
+<!-- 结尾 -->
+ <footer>
+  <div class="footer-title">The ocean goes on.</div>
+  <p>了解一个人，需要一点时间。</p>
+  <p>探索程度：100%<br>感谢你愿意向下潜一点。</p>
+  <p style="margin-top:25px">YUYING'S LITTLE UNIVERSE · 2026</p>
+</footer>
+<button id="back-top" aria-label="返回顶部">↑</button>
+<script src="主网页.js"></script>
+</body>
+</html>
